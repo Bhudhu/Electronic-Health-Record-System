@@ -1,0 +1,93 @@
+{% extends 'patient_records/base.html' %} {% block content %}
+<h2>Patient Card</h2>
+<tr>
+  <th></th>
+  <td>
+    <img
+      src="{{ patient.picture.url|default:'/static/images/default-patient.png' }}"
+      alt="Patient Picture"
+      style="width: 150px; height: auto"
+    />
+  </td>
+</tr>
+<!-- Display patient information -->
+<table class="table table-bordered">
+  <tr>
+    <th>First Name:</th>
+    <td>{{ patient.first_name }}</td>
+  </tr>
+  <tr>
+    <th>Surname:</th>
+    <td>{{ patient.surname }}</td>
+  </tr>
+  <tr>
+    <th>ID Number:</th>
+    <td>{{ patient.id_number }}</td>
+  </tr>
+  <tr>
+    <th>Race:</th>
+    <td>{{ patient.race }}</td>
+  </tr>
+  <tr>
+    <th>Gender:</th>
+    <td>{{ patient.gender }}</td>
+  </tr>
+  <tr>
+    <th>Age:</th>
+    <td>{{ patient.age }}</td>
+  </tr>
+  <tr>
+    <th>Medical Aid Scheme:</th>
+    <td>{{ patient.medical_aid_scheme }}</td>
+  </tr>
+  <tr>
+    <th>Medical Aid Number:</th>
+    <td>{{ patient.medical_aid_number }}</td>
+  </tr>
+  <tr>
+    <th>Previous Surgeries:</th>
+    <td>{{ patient.previous_surgeries }}</td>
+  </tr>
+  <tr>
+    <th>Allergies:</th>
+    <td>{{ patient.allergies }}</td>
+  </tr>
+  <tr>
+    <th>Current Prescription:</th>
+    <td>{{ patient.current_prescription }}</td>
+  </tr>
+  <tr>
+    <th>Address:</th>
+    <td>{{ patient.address }}</td>
+  </tr>
+  <tr>
+    <th>Height:</th>
+    <td>{{ patient.height }} cm</td>
+  </tr>
+  <tr>
+    <th>Weight:</th>
+    <td>{{ patient.weight }} kg</td>
+  </tr>
+  <tr>
+    <th>Emergency Contact:</th>
+    <td>{{ patient.emergency_contact }}</td>
+  </tr>
+</table>
+
+  <!-- Button Container for Edit, Delete, and Home -->
+  {% if patient.id %}
+  <div class="button-container">
+    <a href="{% url 'edit_patient' patient.id %}">
+        <button>Edit Patient</button>
+    </a>
+    <form method="POST" action="{% url 'delete_patient' patient.id %}">
+        {% csrf_token %}
+        <button type="submit">Delete Patient</button>
+    </form>
+    <a href="{% url 'dashboard' %}">
+        <button class="home-button">Go to Dashboard</button>
+    </a>
+</div>
+{% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends 'patient_records/base.html' %} {% block content %}
+<h2 class="form-title">Add Patient</h2>
+
+<!-- Patient Form -->
+<form method="post" enctype=multipart/form-data class="patient-form">
+  {% csrf_token %}
+
+  <!-- Patient Information Table -->
+  <table class="form-table">
+    <tr>
+      <th>First Name:</th>
+      <td><input type="text" name="first_name" required /></td>
+    </tr>
+    <tr>
+      <th>Surname:</th>
+      <td><input type="text" name="surname" required /></td>
+    </tr>
+    <tr>
+      <th>ID Number:</th>
+      <td><input type="text" name="id_number" required /></td>
+    </tr>
+    <tr>
+      <th>Race:</th>
+      <td><input type="text" name="race" required /></td>
+    </tr>
+    <tr>
+      <th>Gender:</th>
+      <td><input type="text" name="gender" required /></td>
+    </tr>
+    <tr>
+      <th>Age:</th>
+      <td><input type="number" name="age" required /></td>
+    </tr>
+    <tr>
+      <th>Medical Aid Scheme:</th>
+      <td><input type="text" name="medical_aid_scheme" required /></td>
+    </tr>
+    <tr>
+      <th>Medical Aid Number:</th>
+      <td><input type="text" name="medical_aid_number" required /></td>
+    </tr>
+    <tr>
+      <th>Previous Surgeries:</th>
+      <td><textarea name="previous_surgeries" required></textarea></td>
+    </tr>
+    <tr>
+      <th>Allergies:</th>
+      <td><textarea name="allergies" required></textarea></td>
+    </tr>
+    <tr>
+      <th>Current Prescription:</th>
+      <td><textarea name="current_prescription" required></textarea></td>
+    </tr>
+    <tr>
+      <th>Address:</th>
+      <td><textarea name="address" required></textarea></td>
+    </tr>
+    <tr>
+      <th>Height:</th>
+      <td><input type="number" name="height" required /></td>
+    </tr>
+    <tr>
+      <th>Weight:</th>
+      <td><input type="number" name="weight" required /></td>
+    </tr>
+    <tr>
+      <th>Emergency Contact:</th>
+      <td><input type="text" name="emergency_contact" required /></td>
+    </tr>
+    <tr>
+      <th>Picture:</th>
+      <td><input type="file" name="picture" accept="image/*" /></td>
+    </tr>
+  </table>
+
+  <button type="submit" class="submit-btn">Save Patient</button>
+</form>
+
+<!-- Home Button -->
+<div class="home-button-container">
+  <a href="{% url 'dashboard' %}" class="home-btn">Home</a>
+</div>
+
+{% endblock %}

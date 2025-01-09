@@ -1,0 +1,38 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Patient Records - Home</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  </head>
+  <body>
+    <header>
+      <h1>Welcome to the Patient Records System</h1>
+      <nav>
+        <ul>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="{% url 'add_patient' %}">Add Patient</a></li>
+          <li><a href="{% url 'search_patient' %}">View Patients</a></li>
+          <li><a href="{% url 'logout' %}">Logout</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <h2>Welcome, {{ user.username }}!</h2>
+        <p>Here, you can manage patient records efficiently and securely.</p>
+        <p>
+          <a href="{% url 'add_patient' %}">Click here to add a new patient</a>
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2024 Patient Records System</p>
+    </footer>
+  </body>
+</html>

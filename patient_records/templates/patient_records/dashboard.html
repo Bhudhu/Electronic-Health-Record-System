@@ -1,0 +1,88 @@
+{% extends 'patient_records/base.html' %} {% block content %}
+<!-- Dashboard Container -->
+<div class="dashboard-container">
+  <!-- Sidebar Navigation -->
+  <div class="sidebar">
+    <h2>Patient Records</h2>
+    <nav>
+      <ul>
+        <li><a href="/add_patient/">Add Patient</a></li>
+        <li><a href="/search_patient/">Search Patients</a></li>
+        <li><a href="/logout/">Logout</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- Main Content Area -->
+  <div class="main-content">
+    <!-- Header Section -->
+    <header class="header">
+      <h1>Welcome to Your Dashboard</h1>
+      <p class="subheading">
+        Manage your patients effectively with our simple and intuitive system.
+      </p>
+    </header>
+
+    <!-- Statistics Section -->
+    <section class="statistics">
+      <div class="stat-box">
+        <h3>Total Patients</h3>
+        <p class="stat-number">{{ total_patients }}</p>
+      </div>
+      <div class="stat-box">
+        <h3>Recent Additions</h3>
+        <p class="stat-number">{{ recent_patients }}</p>
+      </div>
+      <div class="stat-box">
+        <h3>Patients at Risk</h3>
+        <p class="stat-number">{{ patients_at_risk }}</p>
+      </div>
+    </section>
+
+    <!-- Quick Links -->
+    <section class="quick-links">
+      <h2>Quick Links</h2>
+      <div class="link-box">
+        <a href="/add_patient/" class="link-button">Add New Patient</a>
+      </div>
+      <div class="link-box">
+        <a href="/search_patient/" class="link-button"
+          >Search Patient Records</a
+        >
+      </div>
+      <div class="link-box">
+        <a href="/dashboard/" class="link-button">Dashboard Overview</a>
+      </div>
+    </section>
+
+    <!-- Latest Activity -->
+    <section class="latest-activity">
+      <h2>Latest Patient Activity</h2>
+      <table class="activity-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Action</th>
+            <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for activity in latest_activity %}
+          <tr>
+            <td>{{ activity.patient_name }}</td>
+            <td>{{ activity.action }}</td>
+            <td>{{ activity.date }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </section>
+  </div>
+</div>
+
+<!-- Footer Section -->
+<footer class="footer">
+  <p>&copy; 2024 Emergency Health Records. All rights reserved.</p>
+</footer>
+
+{% endblock %}

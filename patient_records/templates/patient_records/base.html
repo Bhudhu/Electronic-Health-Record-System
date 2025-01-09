@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}EHR App{% endblock %}</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{% static 'css/style.css' %}"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <nav class="navbar">
+        <a href="{% url 'dashboard' %}" class="logo"
+          >5G Emergency Smart Ambulance EHR System</a
+        >
+        <div class="nav-links">
+          <a href="{% url 'add_patient' %}" class="nav-link">Add Patient</a>
+          <a href="{% url 'search_patient' %}" class="nav-link"
+            >Search Patient</a
+          >
+          <a href="{% url 'logout' %}" class="nav-link">Logout</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="content">{% block content %}{% endblock %}</main>
+
+    <footer class="footer">
+      <p>&copy; 2024 EHR System. All Rights Reserved.</p>
+    </footer>
+  </body>
+</html>

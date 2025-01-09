@@ -1,0 +1,43 @@
+{% extends 'patient_records/base.html' %} {% block content %}
+<h2 class="form-title">Search Patient</h2>
+
+<!-- Search Form -->
+<form method="POST">
+  {% csrf_token %}
+  <input
+    type="text"
+    name="query"
+    placeholder="Enter ID Number, First Name, or Surname"
+    class="form-input"
+    required
+  />
+  <button type="submit" class="submit-btn">Search</button>
+</form>
+
+<!-- Display Search Results -->
+{% if patients %}
+<table class="search-results-table">
+  <thead>
+    <tr>
+      <th>ID Number</th>
+      <th>First Name</th>
+      <th>Surname</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for patient in patients %}
+    <tr>
+      <td>{{ patient.id_number }}</td>
+      <td>{{ patient.first_name }}</td>
+      <td>{{ patient.surname }}</td>
+      <td>
+        <a href="{% url 'patient_card' patient.id %}" class="home-btn">View</a>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% else %}
+<p>No patients found.</p>
+{% endif %} {% endblock %}
